@@ -1,5 +1,18 @@
 import pandas as pd
+import sys
 import pymysql
+from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow
+from PyQt5.QtWidgets import QInputDialog
+from design.main_design import Ui_MainWindow as MainDesignPy
+from design.setting import Ui_MainWindow as SettingDesign
+
+
+class Example(QWidget, MainDesignPy):
+    def __init__(self):
+        super().__init__()
+        # Вызываем метод для загрузки интерфейса из класса Ui_MainWindow,
+        # остальное без изменений
+        self.setupUi(self)
 
 
 class Wear:
@@ -27,9 +40,15 @@ class Wear:
     def calculate_wear(self):
         pass
 
+
 def main():
+    app = QApplication(sys.argv)
+    ex = Example()
+    ex.show()
+    sys.exit(app.exec_())
     w = Wear('Resources/РЦДМ износ.xlsx')
     w.read_xlsx()
+
 
 
 main()

@@ -1,0 +1,4 @@
+localhost
+admin
+password
+DB
