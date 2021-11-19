@@ -1,18 +1,19 @@
 import pandas as pd
 import sys
 import pymysql
-from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow
+from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QLineEdit
 from PyQt5.QtWidgets import QInputDialog
 from design.main_design import Ui_MainWindow as MainDesignPy
 from design.setting import Ui_MainWindow as SettingDesign
 
 
-class SettingMain(QWidget, SettingDesign):
+class SettingMainR(QWidget, SettingDesign):
     def __init__(self):
         super().__init__()
+        self.ui = SettingDesign()
         # Вызываем метод для загрузки интерфейса из класса Ui_MainWindow,
         # остальное без изменений
-        self.setupUi(self)
+        self.ui.setupUi(self)
 
 
 class MainWearDesign(QWidget, MainDesignPy):
@@ -24,8 +25,8 @@ class MainWearDesign(QWidget, MainDesignPy):
         self.actionSetting.triggered.connect(self.setting_open)
 
     def setting_open(self):
-        settingfile = SettingMain()
-        settingfile.show()
+        self.settingfile = SettingMainR()
+        self.settingfile.show()
 
 class Wear:
     def __init__(self, name_file):
@@ -54,12 +55,12 @@ class Wear:
 
 
 def main():
+    w = Wear('Resources/РЦДМ износ.xlsx')
+    w.read_xlsx()
     app = QApplication(sys.argv)
     ex = MainWearDesign()
     ex.show()
     sys.exit(app.exec_())
-    w = Wear('Resources/РЦДМ износ.xlsx')
-    w.read_xlsx()
 
 
 
