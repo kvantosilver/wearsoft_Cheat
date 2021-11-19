@@ -7,13 +7,25 @@ from design.main_design import Ui_MainWindow as MainDesignPy
 from design.setting import Ui_MainWindow as SettingDesign
 
 
-class Example(QWidget, MainDesignPy):
+class SettingMain(QWidget, SettingDesign):
     def __init__(self):
         super().__init__()
         # Вызываем метод для загрузки интерфейса из класса Ui_MainWindow,
         # остальное без изменений
         self.setupUi(self)
 
+
+class MainWearDesign(QWidget, MainDesignPy):
+    def __init__(self):
+        super().__init__()
+        # Вызываем метод для загрузки интерфейса из класса Ui_MainWindow,
+        # остальное без изменений
+        self.setupUi(self)
+        self.actionSetting.triggered.connect(self.setting_open)
+
+    def setting_open(self):
+        settingfile = SettingMain()
+        settingfile.show()
 
 class Wear:
     def __init__(self, name_file):
@@ -43,7 +55,7 @@ class Wear:
 
 def main():
     app = QApplication(sys.argv)
-    ex = Example()
+    ex = MainWearDesign()
     ex.show()
     sys.exit(app.exec_())
     w = Wear('Resources/РЦДМ износ.xlsx')

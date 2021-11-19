@@ -54,24 +54,24 @@
     <property name="title">
      <string>Файл</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
-    <addaction name="action_3"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSend"/>
+    <addaction name="actionSetting"/>
    </widget>
    <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="action">
+  <action name="actionOpen">
    <property name="text">
     <string>Открыть</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="actionSend">
    <property name="text">
     <string>Отправить</string>
    </property>
   </action>
-  <action name="action_3">
+  <action name="actionSetting">
    <property name="text">
     <string>Настройка</string>
    </property>
