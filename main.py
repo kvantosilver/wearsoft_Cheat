@@ -8,9 +8,12 @@ class Wear:
         self.data = ''
 
     def read_xlsx(self):
-        excel_data = pd.read_excel(self.name_file, sheet_name='351-650')
-        print(excel_data.columns.ravel())
-        print('Excel Sheet to CSV:n', excel_data.to_csv(index=False))
+        collection = pd.read_excel(self.name_file, sheet_name=None)
+
+        combined = pd.concat([value.assign(sheet_source=key)
+                              for key, value in collection.items()],
+                             ignore_index=True)
+        pass
 
     def connect_mysql(self):
         con = pymysql.connect('localhost', 'user17',
@@ -22,7 +25,7 @@ class Wear:
             print("Database version: {}".format(version[0]))
 
     def calculate_wear(self):
-
+        pass
 
 def main():
     w = Wear('Resources/РЦДМ износ.xlsx')
