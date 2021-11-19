@@ -73,12 +73,12 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         self.file = open('data/setting.txt', encoding='UTF-8')
         data = self.file.readlines()
-
         self.lineNameUser.setText(f'{data[1][:-1]}')
         self.lineNameHost.setText(f'{data[0][:-1]}')
         self.linePassword.setText(f'{data[2][:-1]}')
         self.linePassword.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.lineNameDB.setText(f'{data[3]}')
+        self.SaveSetting.clicked.connect(self.save_change)
         self.radioButton.toggled.connect(self.change_pass_status)
         self.ConnectProverka.clicked.connect(self.connect_mysql)
         MainWindow.setWindowTitle(_translate("MainWindow", "Настройки"))
@@ -90,6 +90,16 @@ class Ui_MainWindow(object):
         self.ConnectProverka.setText(_translate("MainWindow", "Проверка соединения"))
         self.SaveSetting.setText(_translate("MainWindow", "Сохранить настройки"))
         self.SelectRepository.setText(_translate("MainWindow", "Выбор репозитория"))
+
+
+    def save_change(self):
+        self.file = open('data/setting.txt', mode='w', encoding='UTF-8')
+        print(self.lineNameHost.text(), file=self.file)
+        print(self.lineNameUser.text(), file=self.file)
+        print(self.linePassword.text(), file=self.file)
+        print(self.lineNameDB.text(), file=self.file)
+        self.file.close()
+
 
     def connect_mysql(self):
         print(self.linePassword.text())
