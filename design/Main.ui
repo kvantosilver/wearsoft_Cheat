@@ -9,31 +9,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1058</width>
-    <height>718</height>
+    <width>1800</width>
+    <height>1000</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Wearsoft</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableView" name="tableView">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>40</y>
-      <width>1051</width>
-      <height>511</height>
-     </rect>
-    </property>
-   </widget>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTableWidget" name="tableWidget"/>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1058</width>
+     <width>1800</width>
      <height>26</height>
     </rect>
    </property>
