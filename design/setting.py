@@ -126,8 +126,7 @@ class Ui_MainWindow(object):
                 password=self.linePassword.text(),
                 database=self.lineNameDB.text(),
             )
-
-            con.close()
+            connection.close()
             win.setText("Соединение установлено")
             win.exec()
         except:
